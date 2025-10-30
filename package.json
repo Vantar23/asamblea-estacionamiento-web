@@ -29,7 +29,13 @@
     "railway:build": "npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker:build": "./docker-scripts.sh build",
+    "docker:run": "./docker-scripts.sh run",
+    "docker:dev": "./docker-scripts.sh dev",
+    "docker:stop": "./docker-scripts.sh stop",
+    "docker:clean": "./docker-scripts.sh clean",
+    "docker:logs": "./docker-scripts.sh logs"
   },
   "eslintConfig": {
     "extends": [
