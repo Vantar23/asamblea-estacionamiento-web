@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -9,6 +10,9 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Configuración de la base de datos
 const dbConfig = {
@@ -131,7 +135,13 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// Servir el frontend React en Railway
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend ejecutándose en puerto ${PORT}`);
   console.log(`📊 Base de datos: ${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`);
+  console.log(`🌐 Aplicación disponible en: http://localhost:${PORT}`);
 });

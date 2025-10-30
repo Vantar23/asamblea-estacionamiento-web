@@ -3,7 +3,7 @@ import { Scanner } from '@yudiel/react-qr-scanner';
 import './App.css';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-production-api.com' 
+  ? window.location.origin 
   : 'http://localhost:5000';
 
 function App() {
