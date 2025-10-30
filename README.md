@@ -33,11 +33,24 @@ npm install
 ```
 
 ### Ejecutar en desarrollo
+
+**Opción 1: Solo frontend**
 ```bash
 npm start
 ```
 
-La aplicación se abrirá en [http://localhost:3000](http://localhost:3000)
+**Opción 2: Frontend + Backend (Recomendado)**
+```bash
+npm run dev:full
+```
+
+**Opción 3: Solo backend**
+```bash
+npm run server
+```
+
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Backend API**: [http://localhost:5000](http://localhost:5000)
 
 ### Construir para producción
 ```bash
@@ -57,6 +70,8 @@ npm run build
 
 - **React 19**: Framework principal
 - **@yudiel/react-qr-scanner**: Librería para escaneo de códigos QR
+- **Express.js**: Servidor backend
+- **MySQL**: Base de datos para almacenamiento persistente
 - **CSS3**: Estilos responsive y animaciones
 - **HTML5**: Estructura semántica optimizada para móvil
 
@@ -68,9 +83,35 @@ La aplicación incluye configuraciones específicas para dispositivos móviles:
 - Soporte para PWA (Progressive Web App)
 - Estilos adaptativos para diferentes tamaños de pantalla
 
+## Base de Datos
+
+La aplicación utiliza MySQL para almacenar las asistencias de forma persistente:
+
+### **Esquema de la tabla `asistencias`:**
+- `id`: ID único autoincremental
+- `fecha_hora`: Timestamp de la asistencia
+- `qr_value`: Valor del código QR escaneado
+- `ip_address`: Dirección IP del dispositivo
+- `user_agent`: Información del navegador
+- `created_at`: Fecha de creación del registro
+
+### **Conexión:**
+- **Host**: hopper.proxy.rlwy.net
+- **Puerto**: 57359
+- **Base de datos**: railway
+- **SSL**: Habilitado para conexión segura
+
+## API Endpoints
+
+- `GET /api/asistencias/count` - Obtener contador de asistencias
+- `POST /api/asistencias` - Registrar nueva asistencia
+- `GET /api/asistencias` - Obtener todas las asistencias
+- `GET /api/health` - Estado del servidor
+
 ## Notas de Desarrollo
 
 - La aplicación está optimizada para dispositivos móviles
 - Requiere acceso a la cámara del dispositivo
 - Funciona mejor en navegadores modernos con soporte para WebRTC
-- El contador se reinicia al recargar la página (no persiste datos)
+- **Los datos se guardan permanentemente en MySQL**
+- Requiere HTTPS para funcionar en dispositivos móviles (usar ngrok)
