@@ -130,9 +130,21 @@ app.get('/api/asistencias', async (req, res) => {
   }
 });
 
+// Ruta de prueba simple
+app.get('/test', (req, res) => {
+  console.log('🧪 Test endpoint solicitado');
+  res.status(200).send('Servidor funcionando correctamente');
+});
+
 // Ruta de salud del servidor
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+  console.log('🏥 Health check solicitado');
+  res.status(200).json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    port: PORT
+  });
 });
 
 // Servir el frontend React en Railway
@@ -140,8 +152,20 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(PORT, () => {
+// Manejo de errores del servidor
+process.on('uncaughtException', (error) => {
+  console.error('❌ Error no capturado:', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Promesa rechazada no manejada:', reason);
+  process.exit(1);
+});
+
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor backend ejecutándose en puerto ${PORT}`);
   console.log(`📊 Base de datos: ${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`);
-  console.log(`🌐 Aplicación disponible en: http://localhost:${PORT}`);
+  console.log(`🌐 Aplicación disponible en: http://0.0.0.0:${PORT}`);
+  console.log(`🏥 Health check disponible en: http://0.0.0.0:${PORT}/api/health`);
 });
