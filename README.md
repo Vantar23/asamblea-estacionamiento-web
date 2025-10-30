@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Asamblea de Estacionamiento - Scanner QR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación móvil para registrar asistencias mediante código QR en asambleas de estacionamiento.
 
-## Available Scripts
+## Características
 
-In the project directory, you can run:
+- 📱 **Diseño móvil optimizado**: Interfaz responsive diseñada específicamente para dispositivos móviles
+- 🔍 **Scanner QR a pantalla completa**: Cámara en modo pantalla completa para mejor experiencia de escaneo
+- ✅ **Detección automática**: Solo acepta códigos QR con el valor "Asamblea de circuito"
+- 📊 **Contador de asistencias**: Registro automático y visualización del número de asistencias
+- 🚪 **Salida fácil**: Botón de cerrar siempre visible para salir del scanner en cualquier momento
 
-### `npm start`
+## Funcionalidad
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Vista Principal**: Muestra un contador de asistencias y un botón para abrir el scanner
+2. **Scanner QR**: 
+   - Se abre a pantalla completa
+   - Usa la cámara trasera del dispositivo
+   - Solo acepta códigos QR con el texto "Asamblea de circuito"
+   - Se cierra automáticamente al detectar un QR válido
+   - Incluye botón de cerrar para salir manualmente
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instalación y Uso
 
-### `npm test`
+### Requisitos
+- Node.js (versión 14 o superior)
+- NPM o Yarn
+- Dispositivo móvil con cámara
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Instalación
+```bash
+npm install
+```
 
-### `npm run build`
+### Ejecutar en desarrollo
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La aplicación se abrirá en [http://localhost:3000](http://localhost:3000)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Construir para producción
+```bash
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Uso en Móvil
 
-### `npm run eject`
+1. Abre la aplicación en tu navegador móvil
+2. Presiona el botón "📱 Abrir Scanner QR"
+3. Permite el acceso a la cámara cuando se solicite
+4. Apunta la cámara hacia un código QR que contenga el texto "Asamblea de circuito"
+5. La aplicación detectará automáticamente el código y cerrará el scanner
+6. El contador de asistencias se incrementará automáticamente
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tecnologías Utilizadas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React 19**: Framework principal
+- **@yudiel/react-qr-scanner**: Librería para escaneo de códigos QR
+- **CSS3**: Estilos responsive y animaciones
+- **HTML5**: Estructura semántica optimizada para móvil
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Configuración Móvil
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La aplicación incluye configuraciones específicas para dispositivos móviles:
+- Viewport optimizado para pantallas táctiles
+- Prevención de zoom no deseado
+- Soporte para PWA (Progressive Web App)
+- Estilos adaptativos para diferentes tamaños de pantalla
 
-## Learn More
+## Notas de Desarrollo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- La aplicación está optimizada para dispositivos móviles
+- Requiere acceso a la cámara del dispositivo
+- Funciona mejor en navegadores modernos con soporte para WebRTC
+- El contador se reinicia al recargar la página (no persiste datos)
