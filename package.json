@@ -18,6 +18,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "preinstall": "node clean-cache.js",
+    "postinstall": "node clean-cache.js",
+    "clean": "node clean-cache.js",
     "start": "react-scripts start",
     "dev": "react-scripts start",
     "server": "node server.js",
