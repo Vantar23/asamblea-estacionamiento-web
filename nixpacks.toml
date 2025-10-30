@@ -1,0 +1,11 @@
+[phases.setup]
+nixpkgs = ["nodejs_20", "npm"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["./build-railway.sh"]
+
+[start]
+cmd = "npm run railway:start"
