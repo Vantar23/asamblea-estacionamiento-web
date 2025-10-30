@@ -22,6 +22,7 @@ WORKDIR /app
 # Copiar archivos de configuración de dependencias
 COPY package*.json ./
 COPY .npmrc ./
+COPY clean-cache.js ./
 
 # Instalar dependencias
 RUN npm ci --only=production --no-audit --no-fund
